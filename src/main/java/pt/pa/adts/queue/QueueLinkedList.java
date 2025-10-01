@@ -2,6 +2,7 @@ package pt.pa.adts.queue;
 
 /**
  * This class must implement the Queue interface
+ *
  * @param <T>
  */
 public class QueueLinkedList<T> implements Queue<T> {
@@ -16,28 +17,21 @@ public class QueueLinkedList<T> implements Queue<T> {
         size = 0;
     }
 
-    public void enqueue(T elem) throws QueueFullException, NullPointerException {
-        if (elem == null) {
-            throw new NullPointerException("Element cannot be null");
-        } else {
-            ListNode newNode = new ListNode(elem, trailer.prev, trailer);
-            trailer.prev.next = newNode;
-            trailer.prev = newNode;
-            size++;
-        }
+    public void enqueue(T elem) throws QueueFullException {
+        ListNode newNode = new ListNode(elem, trailer.prev, trailer);
+        trailer.prev.next = newNode;
+        trailer.prev = newNode;
+        size++;
     }
 
     public T dequeue() throws QueueEmptyException {
-        if (isEmpty()) {
-            throw new QueueEmptyException("Queue is empty");
-        } else {
-            ListNode firstNode = header.next;
-            T element = firstNode.element;
-            header.next = firstNode.next;
-            firstNode.next.prev = header;
-            size--;
-            return element;
-        }
+        ListNode firstNode = header.next;
+        T element = firstNode.element;
+        header.next = firstNode.next;
+        firstNode.next.prev = header;
+        size--;
+        return element;
+
     }
 
     public T front() throws QueueEmptyException {
