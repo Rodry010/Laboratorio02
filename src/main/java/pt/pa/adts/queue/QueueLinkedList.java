@@ -4,7 +4,7 @@ package pt.pa.adts.queue;
  * This class must implement the Queue interface
  * @param <T>
  */
-public class QueueLinkedList<T>  {
+public class QueueLinkedList<T> implements Queue<T> {
 
     private ListNode header, trailer;
     private int size;
@@ -13,7 +13,29 @@ public class QueueLinkedList<T>  {
         //TODO: construtor deve inicializar uma fila vazia
     }
 
-    //TODO: implementar métodos da interface à custa da estrutura de dados fornecida
+    public void enqueue(T elem) throws QueueFullException, NullPointerException {
+
+    }
+
+    public T dequeue() throws QueueEmptyException {
+        return null;
+    }
+
+    public T front() throws QueueEmptyException {
+        return null;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public void clear() {
+
+    }
 
     private class ListNode {
         private T element;
